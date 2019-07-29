@@ -1,20 +1,47 @@
-sudo: false
 language: python
-python: 
-  - "2.7"
-  - "3.5"
-  - "3.6"
-  - "3.7"
+
+python: 3.5
+
+# Use container based infrastructure
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - libenchant-dev
+
+#env:
+matrix:
+  include:
+    - python: '3.6'
+      env: TOXENV=flake8
+    - python: '3.6'
+      env: TOXENV=py36-dj111-cms34
+    - python: '3.5'
+      env: TOXENV=py35-dj111-cms34
+    - python: '2.7'
+      env: TOXENV=py27-dj111-cms34
+    - python: '3.6'
+      env: TOXENV=py36-dj111-cms35
+    - python: '3.6'
+      env: TOXENV=py36-dj20-cms36
+    - python: '3.6'
+      env: TOXENV=py36-dj21-cms36
+    - python: '3.7'
+      env: TOXENV=py37-dj20-cms36
+    - python: '3.7'
+      env: TOXENV=py37-dj21-cms36
+#  allow_failures:
 
 cache:
   directories:
     - $HOME/.wheelhouse
 
 install:
-  - pip install tox-travis
+  - pip install tox
   - pip install coveralls
 
 script:
-  - tox
+  - tox -e $TOXENV
 
 after_success: coveralls
