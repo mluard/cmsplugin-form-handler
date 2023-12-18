@@ -2,15 +2,15 @@
 
 from __future__ import unicode_literals
 
-from django.conf.urls import url
+from django.urls import path
 
 from .views import ProcessFormView
 
 app_name = 'cmsplugin_form_handler'
 
 urlpatterns = [
-    url(
-        r'^(?P<plugin_id>\d+)/$',
+    path(
+        '<int:plugin_id>/',
         ProcessFormView.as_view(),
         name='process_form'
     ),
