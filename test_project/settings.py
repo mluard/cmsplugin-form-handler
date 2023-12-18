@@ -50,7 +50,6 @@ TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
-USE_L10N = True
 
 USE_TZ = True
 
@@ -128,6 +127,7 @@ INSTALLED_APPS = (
     'djangocms_text_ckeditor',
     'cmsplugin_form_handler',
     'crispy_forms',
+    'crispy_bootstrap3',
     'test_project.apps.sample',
     'test_project'
 )
@@ -163,6 +163,9 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap3"
+CRISPY_TEMPLATE_PACK = "bootstrap3"
+
 DATABASES = {
     'default': {
         'CONN_MAX_AGE': 0,
@@ -185,3 +188,5 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

@@ -1,5 +1,6 @@
-django-crispy-forms==1.7.1
-
+django-crispy-forms>=2.0
+crispy-bootstrap3
+djangocms-text-ckeditor>=5.0
 
 flake8
 coverage==4.5.3
